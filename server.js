@@ -73,7 +73,7 @@ app.route("/file/:id").get(handleDownload).post(handleDownload)
 
 async function handleDownload(req, res) {
 
-    if (req.body.password == null) {
+    if (req.body.password == null) {       
         res.render("password")
     }
 
