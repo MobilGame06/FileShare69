@@ -4,7 +4,7 @@ const multer = require("multer")
 const bcrypt = require("bcrypt")
 const mysql = require("mysql")
 const path = require("path")
-
+const fs = require("fs")
 
 const express = require("express")
 const app = express()
@@ -49,12 +49,12 @@ app.post("/upload", upload.single("file"), async (req, res) => {
        }
        return result;
     }
-
   const fileData = {path: req.file.path, 
     originalName: req.file.originalname, 
     password: "",
     downloadCount: 0,
     urlid: makeid(20),
+    maxDownload: req.body.maxDownload
 }
   if (req.body.password != null && req.body.password !== "") {
     fileData.password = await bcrypt.hash(req.body.password, 10)
@@ -72,6 +72,9 @@ app.post("/upload", upload.single("file"), async (req, res) => {
 app.route("/file/:id").get(handleDownload).post(handleDownload)
 
 async function handleDownload(req, res) {
+ db.query('SELECT * FROM files WHERE urlid = ?', req.params.id , (err,rows ,result) => {
+    if (err) throw err
+    if(!(rows[0].downloadCount >= rows[0].maxDownload)){
 
     if (req.body.password == null) {       
         res.render("password")
@@ -79,13 +82,16 @@ async function handleDownload(req, res) {
 
     if (req.body.password != null) {
   db.query('SELECT * FROM files WHERE urlid = ?', req.params.id , (err,rows ,result) => {
-        console.log(rows)
+        //password check
         if (bcrypt.compareSync(req.body.password, rows[0].password)) {
-           //file.downloadCount++
+          //file.downloadCount++
            console.log(rows[0].downloadCount)
-        
+           db.query('UPDATE files SET downloadCount = ? WHERE urlid = ?', [rows[0].downloadCount + 1, req.params.id] , (err,result) => {
+            if (err) throw err
+            })
+
+        //download file
            var urlPath = rows[0].path
-           console.log(urlPath)
            res.download(path.resolve(urlPath), JSON.stringify(rows[0].originalName), (err) => {
              if (err) {
                  console.log(err)
@@ -94,10 +100,23 @@ async function handleDownload(req, res) {
         } else {
             res.render("password", { error: true })
             return
-        }
-                   
+        }              
       })
     }
+  }else{
+    res.render("password", { MaxDownloaderror: true })
+          //delete file if download count is greater than max download
+          fs.unlink(rows[0].path, (err) => {
+            if (err) throw err
+            console.log('File deleted!')
+          })
+          //delete file from database
+          db.query('DELETE FROM files WHERE urlid = ?', req.params.id , (err,result) => {
+            if (err) throw err
+            console.log('File deleted from database!')
+          })
+  }
+  })
     }
 
 
