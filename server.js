@@ -74,6 +74,7 @@ app.route("/file/:id").get(handleDownload).post(handleDownload)
 async function handleDownload(req, res) {
  db.query('SELECT * FROM files WHERE urlid = ?', req.params.id , (err,rows ,result) => {
     if (err) throw err
+    try{
     if(!(rows[0].downloadCount >= rows[0].maxDownload)){
 
     if (req.body.password == null) {       
@@ -116,8 +117,11 @@ async function handleDownload(req, res) {
             console.log('File deleted from database!')
           })
   }
+  } catch(err){
+    res.render("error")
+  }
   })
-    }
+ }
 
 
 app.listen(process.env.PORT)
