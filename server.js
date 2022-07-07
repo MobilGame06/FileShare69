@@ -1,10 +1,11 @@
 //imports
-require("dotenv").config()
 const multer = require("multer")
 const bcrypt = require("bcrypt")
 const mysql = require("mysql")
 const path = require("path")
 const fs = require("fs")
+var CONFIG = require('./config.json')
+
 
 const express = require("express")
 const app = express()
@@ -14,10 +15,10 @@ const upload = multer({ dest: "uploads" })
 
 //conn
 const db = mysql.createConnection({
-    host: process.env.myHost,
-    user : process.env.myUser,
-    password : process.env.myPassword,
-    database: process.env.myDatabase
+    host: CONFIG.myHost,
+    user : CONFIG.myUser,
+    password : CONFIG.myPassword,
+    database: CONFIG.myDatabase
 });
 
 //connect
@@ -124,4 +125,4 @@ async function handleDownload(req, res) {
  }
 
 
-app.listen(process.env.PORT)
+app.listen(CONFIG.PORT)
