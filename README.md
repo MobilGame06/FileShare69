@@ -38,7 +38,7 @@ This is an example of how to list things you need to use the software and how to
    git clone https://github.com/MobilGame06/FileShare69.git
    ```
 
-2. Create a user account with own database in mysql and import the provided sql file(test-file.sql)
+2. Create a user account with own database in mysql and import the provided sql file(file-test.sql)
 
 3. Install NPM packages
    ```sh
