@@ -5,6 +5,9 @@ const mysql = require("mysql")
 const path = require("path")
 const fs = require("fs")
 var CONFIG = require('./config.json')
+var morgan = require('morgan')
+require('log-timestamp');
+
 
 
 const express = require("express")
@@ -12,6 +15,9 @@ const app = express()
 app.use(express.urlencoded({ extended: true }))
 
 const upload = multer({ dest: "uploads" })
+if (CONFIG.logging) {
+  app.use(morgan('combined'))
+}
 
 //conn
 const db = mysql.createConnection({
@@ -87,7 +93,7 @@ async function handleDownload(req, res) {
         //password check
         if (bcrypt.compareSync(req.body.password, rows[0].password)) {
           //file.downloadCount++
-           console.log(rows[0].downloadCount)
+           console.log("File Downloads: " + rows[0].downloadCount)
            db.query('UPDATE files SET downloadCount = ? WHERE urlid = ?', [rows[0].downloadCount + 1, req.params.id] , (err,result) => {
             if (err) throw err
             })
