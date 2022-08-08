@@ -43,16 +43,14 @@
    ```sh
    npm install
    ```
-4. Enter your mysql data into `config.json`
-   ```json
-   {
-    "myHost": "localhost",
-    "myUser": "file",
-    "myPassword": "YourPw",
-    "myDatabase": "YourDatabaseName",
-    "PORT":"3000",
-    "logging": false
-    }
+4. Enter your mysql data into `.env`
+   ```env
+   myHost=dbIp
+   myUser=dbUser
+   myPassword=dbPw
+   myDatabase=dbDatabase
+   PORT=3003
+   logging=false
    ```
 5. Start it via pm2
    ```sh
