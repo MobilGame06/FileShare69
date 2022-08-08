@@ -4,7 +4,8 @@ const bcrypt = require("bcrypt")
 const mysql = require("mysql")
 const path = require("path")
 const fs = require("fs")
-var CONFIG = require('./config.json')
+require("dotenv").config()
+CONFIG = process.env
 var morgan = require('morgan')
 require('log-timestamp');
 
@@ -15,7 +16,7 @@ const app = express()
 app.use(express.urlencoded({ extended: true }))
 
 const upload = multer({ dest: "uploads" })
-if (CONFIG.logging) {
+if (CONFIG.logging == "true") {
   app.use(morgan('combined'))
 }
 

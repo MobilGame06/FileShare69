@@ -1,8 +1,0 @@
-{
-    "myHost": "localhost",
-    "myUser": "file",
-    "myPassword": "YourPw",
-    "myDatabase": "YourDatabaseName",
-    "PORT":"3000",
-    "logging": false
-}
