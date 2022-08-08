@@ -20,6 +20,7 @@
 - ✅ Set encrypted password
 - ✅ Send public download link
 - ✅ Set a maximum download for every file
+- ✅ Nice Design with Bootstrap
 
 ## Getting Started
 
