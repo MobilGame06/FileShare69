@@ -21,6 +21,8 @@
 - ✅ Send public download link
 - ✅ Set a maximum download for every file
 - ✅ Nice Design with Bootstrap
+- ✅ Dark/Light Mode depending on system color(i hate light mode :D)
+- ✅ Easy to setup
 
 ## Getting Started
 
