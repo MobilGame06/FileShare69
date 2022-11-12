@@ -13,12 +13,22 @@ require('log-timestamp');
 
 const express = require("express")
 const app = express()
+var RateLimit = require('express-rate-limit');
+var limiter = RateLimit({
+  windowMs: 1*60*1000, // 1 minute
+  max: 10
+});
 app.use(express.urlencoded({ extended: true }))
+app.use('', limiter)
+
 
 const upload = multer({ dest: "uploads" })
 if (CONFIG.logging == "true") {
   app.use(morgan('combined'))
 }
+
+
+
 
 //conn
 const db = mysql.createConnection({
