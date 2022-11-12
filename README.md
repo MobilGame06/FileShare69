@@ -25,21 +25,30 @@
 ## Getting Started
 
 ### Requirements
+#### Installed via Installer
 * npm
 * nodejs
-* mysql database
 * pm2
+#### Manual installation
+* mysql database
+
+                   
 
 ### Installation
-
-1. Clone the repo
+1. Use the installer to install nodejs,npm,pm2 and all dependencies for you:
+                   (Tested on ubuntu 20 works on every distro with apt)
    ```sh
-   git clone https://github.com/MobilGame06/FileShare69.git
-   ```
-
+   curl -s -L https://raw.githubusercontent.com/MobilGame06/FileShare69/main/install.sh | bash                                    
+   ``` 
+                   
+  or Clone the repo
+     ```sh
+    git clone https://github.com/MobilGame06/FileShare69.git
+     ```
+                   
 2. Create a user account with own database in mysql and import the provided sql file(file-test.sql)
 
-3. Install NPM packages
+3. Install NPM packages (ONLY when not using installer)
    ```sh
    npm install
    ```
