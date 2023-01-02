@@ -44,7 +44,7 @@
    ``` 
                    
   or Clone the repo
-     ```sh
+     ```
     git clone https://github.com/MobilGame06/FileShare69.git
      ```
                    
