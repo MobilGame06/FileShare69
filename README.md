@@ -67,5 +67,15 @@
    ```sh
    pm2 start server.js --name fileShare69
    ```
-
+### Docker
+Change the commands to your liking:
+                   
+First create a Volume                   
+``` sh
+docker volume create --name fileshare
+``` 
+Then change the -e variables (don't forget to import mysql from the top installation)
+``` sh
+docker run -v fileshare:/app/uploads -p 1289:8080 -e myHost='mysqlIP' -e myUser='mysqlUser' -e myPassword='mysqlPW' -e myDatabase='file-test' mobilgame/fileshare69:1.0                    
+```       
 <p align="right">(<a href="#top">back to top</a>)</p>
