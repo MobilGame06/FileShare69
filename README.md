@@ -8,7 +8,7 @@
   <h3 align="center">FileShare69</h3>
 
   <p align="center">
-    FileShare69 is a selfhosted service to upload and download a password secured file. You can also set how often a file can be downloaded before it gets deleted.
+    📁 Introducing FileShare69, the ultimate self-hosted file sharing solution for secure and convenient uploads and downloads! With FileShare69, you can easily upload and share password-protected files, and even set limits on how many times a file can be downloaded before it's automatically deleted. It's the perfect solution for individuals or businesses who want a simple and secure way to share files without relying on third-party services. Try FileShare69 today and experience the freedom of self-hosted file sharing! 📁
     <br />
     <br />
   </p>
@@ -16,13 +16,16 @@
 
 
 ### Features
-- ✅ Upload files in any format
-- ✅ Set encrypted password
-- ✅ Send public download link
-- ✅ Set a maximum download for every file
-- ✅ Nice Design with Bootstrap
-- ✅ Dark/Light Mode depending on system color(i hate light mode :D)
-- ✅ Easy to setup
+                  
+- ✅ **Self-hosted:** FileShare69 is a self-hosted file sharing solution that gives you complete control over your data.
+- ✅ **Secure uploads and downloads:** FileShare69 allows you to securely upload and download files using password protection.
+- ✅ **Customizable download limits:** You can set custom download limits for your files, specifying how many times a file can be downloaded before it's deleted.
+- ✅ **Easy to use:** FileShare69 is designed to be user-friendly and intuitive, making it easy for anyone to use.
+- ✅ **Mobile-friendly:** FileShare69 is optimized for mobile devices, so you can access your files on the go.
+- ✅ **Open source:** FileShare69 is an open source project, which means you can contribute to its development and make it even better.
+- ✅ **Flexible deployment options:** FileShare69 can be deployed on a variety of platforms, including Linux, Windows, and macOS.
+- ✅ **Minimalistic design:** FileShare69 has a clean and minimalistic design, making it easy to navigate and use.
+- ✅ **Fast and reliable:** FileShare69 is built using modern technologies, ensuring fast and reliable performance.
 
 ## Getting Started
 
