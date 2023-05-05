@@ -142,4 +142,6 @@ async function handleDownload(req, res) {
  }
 
 
-app.listen(CONFIG.PORT)
+let server = app.listen(CONFIG.PORT, () => {
+    console.log('Listening on port ' + server.address().port)
+})
